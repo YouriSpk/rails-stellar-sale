@@ -7,3 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require "open-uri"
+require 'json'
+
+file = URI.open("https://api.themoviedb.org/3/movie/top_rated", headers={'X-Api-Key': 'YOUR_API_KEY'})
+puts JSON.parse(file)

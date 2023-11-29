@@ -20,7 +20,7 @@ http.use_ssl = true
 
 request = Net::HTTP::Get.new(url)
 request["accept"] = 'application/json'
-request["X-Api-Key"] = ENV['NINJA_API_KEY']
+request["X-Api-Key"] = "cAApfZJ3W8AxYJ/4g01QUQ==AWo8XyIMXo7CEUTN"
 
 response = http.request(request)
 data = JSON.parse(response.body)
@@ -30,10 +30,10 @@ if data
   puts "Seeding new data....."
   data.each do |item|
     puts item
-    # Star.create(initial_name: "#{item['name']}, #{item['constellation']}",
-    #             distance_from_earth_in_light_years: item["distance_light_year"],
-    #             spectral_class: item["spectral_class"],
-    #             user_id: 1)
+    Star.create(initial_name: "#{item['name']}, #{item['constellation']}",
+                distance_from_earth_in_light_years: item["distance_light_year"],
+                spectral_class: item["spectral_class"],
+                user_id: 1)
   end
   puts "Seeding finished, #{Star.count} stars are created"
 end

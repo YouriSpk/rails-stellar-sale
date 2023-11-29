@@ -1,0 +1,11 @@
+<%= simple_form_for [@star, @rental] do |f| %>
+  <%= f.input :new_name %>
+  <%= f.input :start_date,
+              as: :string,
+              input_html: { data: { controller: "datepicker" } } %>
+  <%= f.input :end_date,
+              as: :string,
+              input_html: { data: { controller: "datepicker" } } %>
+
+  <%= f.submit %>
+<% end %>

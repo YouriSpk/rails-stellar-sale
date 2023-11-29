@@ -2,3 +2,4 @@
 <p><%= @star.distance_from_earth_in_light_years %> light Years from Earth</p>
 <p><%= @star.price %>Euro</p>
 <p>It is an <%= @star.spectral_class %> spectral class </p>
+<%= link_to "Rent This Star NOW!", new_star_rental_path(@star) %>

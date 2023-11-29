@@ -4,7 +4,7 @@
       <h2><%= star.initial_name %></h2>
       <p><strong>Distance (light years):</strong> <%= star.distance_from_earth_in_light_years %></p>
       <p><strong>Spectral Class:</strong> <%= star.spectral_class %></p>
-      <p><strong>Price:</strong> $<%= rand(100..1000) %></p>
+      <p><strong>Price per day:</strong> <%= star.price %>€ </p>
       <img src="<%= 'https://imageio.forbes.com/specials-images/imageserve/61d4ded7a0cee3e8bd299df6/0x0.jpg?format=jpg&crop=3037,1424,x280,y381,safe&height=900&width=1600&fit=bounds' %>" alt="<%= star.initial_name %> Image">
     <% end %>
   </div>

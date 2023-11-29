@@ -15,7 +15,7 @@ class StarsController < ApplicationController
 
   def create
     @star = Star.new(star_params)
-    @star.user_id = 1
+    @star.user_id = current_user
     if @star.save
       redirect_to stars_path, notice: 'Star was successfully created.'
     else

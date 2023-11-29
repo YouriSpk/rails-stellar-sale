@@ -30,10 +30,10 @@ if data
   puts "Seeding new data....."
   data.each do |item|
     puts item
-    Star.create(initial_name: "#{item['name']}, #{item['constellation']}",
-                distance_from_earth_in_light_years: item["distance_light_year"],
-                spectral_class: item["spectral_class"],
-                user_id: 1)
+    # Star.create(initial_name: "#{item['name']}, #{item['constellation']}",
+    #             distance_from_earth_in_light_years: item["distance_light_year"],
+    #             spectral_class: item["spectral_class"],
+    #             user_id: 1)
   end
   puts "Seeding finished, #{Star.count} stars are created"
 end

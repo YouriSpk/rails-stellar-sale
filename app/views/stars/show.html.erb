@@ -1,5 +1,18 @@
-<h2><%= @star.initial_name %></h2>
-<p><%= @star.distance_from_earth_in_light_years %> light Years from Earth</p>
-<p><%= @star.price %>Euro</p>
-<p>It is an <%= @star.spectral_class %> spectral class </p>
-<%= link_to "Rent This Star NOW!", new_star_rental_path(@star) %>
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body d-flex align-items-center">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="<%= 'https://imageio.forbes.com/specials-images/imageserve/61d4ded7a0cee3e8bd299df6/0x0.jpg?format=jpg&crop=3037,1424,x280,y381,safe&height=900&width=1600&fit=bounds' %>" class="img-fluid" alt="<%= @star.initial_name %> Image">
+        </div>
+        <div class="col-md-6">
+          <h2><%= @star.initial_name %></h2>
+          <p><strong><%= @star.distance_from_earth_in_light_years %> light Years from Earth</strong></p>
+          <p><strong><%= @star.price %> Euro</strong></p>
+          <p>It is an <strong><%= @star.spectral_class %></strong> spectral class</p>
+          <%= link_to "Rent This Star NOW!", new_star_rental_path(@star), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

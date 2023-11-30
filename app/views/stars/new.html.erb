@@ -1,34 +1,30 @@
-<%= simple_form_for @star do |form| %>
-  <%= form.error_notification %>
+<%= simple_form_for @star do |f| %>
+  <%= f.error_notification %>
 
   <div class="field">
-    <%= form.label :initial_name %>
-    <%= form.text_field :initial_name %>
+    <%= f.input :initial_name %>
   </div>
 
   <div class="field">
-    <%= form.label :price %>
-    <%= form.number_field :price %>
+    <%= f.input :price %>
   </div>
 
   <div class="field">
-    <%= form.label :category %>
-    <%= form.text_field :category %>
+     <%= f.input :category %>
   </div>
 
   <div class="field">
-    <%= form.label :distance_from_earth_in_light_years %>
-    <%= form.number_field :distance_from_earth_in_light_years %>
+    <%= f.input :distance_from_earth_in_light_years %>
   </div>
 
   <div class="field">
-    <%= form.label :spectral_class %>
-    <%= form.text_field :spectral_class %>
+    <%= f.input :spectral_class %>
   </div>
 
-
-
+  <div class="field">
+    <%= f.input :photo %>
+  </div>
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>

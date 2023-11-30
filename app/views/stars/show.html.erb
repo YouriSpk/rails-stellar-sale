@@ -8,7 +8,7 @@
         <div class="col-md-6">
           <h2><%= @star.initial_name %></h2>
           <p><strong><%= @star.distance_from_earth_in_light_years %> light Years from Earth</strong></p>
-          <p><strong><%= @star.price %> Euro</strong></p>
+          <p><strong><div id="starPrice"><%= @star.price %></div> Euro</strong></p>
           <p>It is an <strong><%= @star.spectral_class %></strong> spectral class</p>
 
           <div data-controller="toggle" class="mt-5">
@@ -16,6 +16,8 @@
             <div data-toggle-target="togglableElement" class="d-none">
               <%= render "rentals/form", star: @star, rental: @rental %>
             </div>
+          </div>
+          <div  id="totalSum">
           </div>
 
         </div>

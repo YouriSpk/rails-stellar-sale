@@ -16,6 +16,20 @@ class RentalsController < ApplicationController
     end
   end
 
+  def approve_request
+    @rental = Rental.find(params[:id])
+
+    # Check if the current user is an admin
+    if current_user.admin?
+      # Update the approved status to true
+      @rental.update(approved: true)
+
+      redirect_to dashboard_path, notice: 'Request approved successfully.'
+    else
+      redirect_to dashboard_path, alert: 'You do not have permission to approve requests.'
+    end
+  end
+
   private
 
   def rental_param

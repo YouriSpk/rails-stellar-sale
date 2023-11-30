@@ -1,0 +1,23 @@
+<!-- app/views/pages/dashboard.html.erb -->
+
+<div class="container mt-5">
+  <h2>Welcome, <%= @user.first_name %> <%= @user.last_name %>!</h2>
+
+  <% if @user.admin? %>
+    <!-- Display pending requests for admin -->
+    <h3>Pending Requests:</h3>
+    <ul>
+      <% @pending_requests.each do |request| %>
+        <li><%= request %> <!-- Replace with actual details --></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <!-- Display rentals for non-admin users -->
+    <h3>Your Rentals:</h3>
+    <ul>
+      <% @rentals.each do |rental| %>
+        <li><%= rental.details %> <!-- Replace with actual details --></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

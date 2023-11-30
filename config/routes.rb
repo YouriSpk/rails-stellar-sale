@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :stars do
     resources :rentals
   end
+  get '/dashboard', to: 'pages#dashboard'
   # Defines the root path route ("/")
   # root "posts#index"
 end

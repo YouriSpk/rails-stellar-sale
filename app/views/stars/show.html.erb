@@ -1,27 +1,31 @@
-<div class="container mt-5">
-  <div class="card">
-    <div class="card-body d-flex align-items-center">
-      <div class="row">
-        <div class="col-md-6">
-          <img src="<%= 'https://imageio.forbes.com/specials-images/imageserve/61d4ded7a0cee3e8bd299df6/0x0.jpg?format=jpg&crop=3037,1424,x280,y381,safe&height=900&width=1600&fit=bounds' %>" class="img-fluid" alt="<%= @star.initial_name %> Image">
-        </div>
-        <div class="col-md-6">
-          <h2><%= @star.initial_name %></h2>
-          <p><strong><%= @star.distance_from_earth_in_light_years %> light Years from Earth</strong></p>
-          <p><strong><div id="starPrice"><%= @star.price %></div> Euro</strong></p>
-          <p>It is an <strong><%= @star.spectral_class %></strong> spectral class</p>
+<div class="container-fluid mt-5 mx-auto">
+  <h2 class="display-3 text-center"><%= @star.initial_name %></h2>
+  <div class="container border border-dark rounded-4 p-4">
+    <div class="row">
+    <!-- Column for the star image -->
+    <div class="col-md-12 text-center">
+      <img src="<%= 'https://imageio.forbes.com/specials-images/imageserve/61d4ded7a0cee3e8bd299df6/0x0.jpg?format=jpg&crop=3037,1424,x280,y381,safe&height=900&width=1600&fit=bounds' %>" class="img-fluid rounded-4" alt="<%= @star.initial_name %> Image">
+    </div>
+  </div>
+  <div class="row">
+    <!-- Column for star information and form -->
+    <div class="col-md-12 text-center">
+      <div>
+        <!-- Star information -->
+        <p class="display-6"><strong><%= @star.distance_from_earth_in_light_years %> light Years from Earth</strong></p>
+        <p class="display-6"><strong><div id="starPrice"><%= @star.price %></div> <span class="display-5">€</span></strong></p>
+        <p class="display-6">It is an <strong><%= @star.spectral_class %></strong> spectral class</p>
 
-          <div data-controller="toggle" class="mt-5">
-            <button data-action="click->toggle#fire" class="btn btn-outline-primary">Rent This Star NOW!</button>
-            <div data-toggle-target="togglableElement" class="d-none">
-              <%= render "rentals/form", star: @star, rental: @rental %>
-            </div>
+        <!-- Rental form -->
+        <div data-controller="toggle" class="mt-5">
+          <button data-action="click->toggle#fire" class="btn btn-dark btn-lg rounded-pill border border-light text-white btn-light:hover text-dark">Rent This Star NOW!</button>
+          <div data-toggle-target="togglableElement" class="d-none">
+            <%= render "rentals/form", star: @star, rental: @rental %>
           </div>
-          <div  id="totalSum">
-          </div>
-
         </div>
+        <div id="totalSum"></div>
       </div>
     </div>
+  </div>
   </div>
 </div>

@@ -1,4 +1,7 @@
-<%= simple_form_for [@star, @rental] do |f| %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+        <div class="col-md-6">
+          <%= simple_form_for [@star, @rental] do |f| %>
   <%= f.input :new_name %>
   <%= f.input :start_date,
               as: :string,
@@ -10,5 +13,8 @@
                                     controller: "datepicker"} ,
                                     class: "d-none"} %>
 
-  <%= f.submit %>
+  <%= f.submit "Create", class: "btn btn-dark btn-lg rounded-pill border border-light text-white btn-light:hover text-dark" %>
 <% end %>
+        </div>
+  </div>
+</div>

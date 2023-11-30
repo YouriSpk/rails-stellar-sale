@@ -5,7 +5,10 @@
               input_html: { data: { controller: "datepicker" } } %>
   <%= f.input :end_date,
               as: :string,
-              input_html: { data: { controller: "datepicker" } } %>
+              label_html: { class: 'd-none' },
+              input_html: { data: {
+                                    controller: "datepicker"} ,
+                                    class: "d-none"} %>
 
   <%= f.submit %>
 <% end %>

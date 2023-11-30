@@ -26,8 +26,10 @@
     <%= form.text_field :spectral_class %>
   </div>
 
-
-
+  <div class="field">
+    <%= form.label :photo %>
+    <%= form.input :photo, as: :file %>
+  </div>
   <div class="actions">
     <%= form.submit %>
   </div>

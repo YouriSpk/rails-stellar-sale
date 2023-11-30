@@ -10,7 +10,7 @@ class User < ApplicationRecord
   private
 
   def set_admin_role
-    admin_emails = ['youri.soposki@gmail.com', 'medocius@gmail.com', 'basant179@gmail.com', 'giovanni.malesci@hotmail.com']
+    admin_emails = ['youri.soposki@gmail.com', 'medocius2@gmail.com', 'basant179@gmail.com', 'giovanni.malesci@hotmail.com']
     self.admin = admin_emails.include?(email)
   end
 end

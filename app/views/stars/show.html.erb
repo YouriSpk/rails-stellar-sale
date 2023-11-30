@@ -10,7 +10,14 @@
           <p><strong><%= @star.distance_from_earth_in_light_years %> light Years from Earth</strong></p>
           <p><strong><%= @star.price %> Euro</strong></p>
           <p>It is an <strong><%= @star.spectral_class %></strong> spectral class</p>
-          <%= link_to "Rent This Star NOW!", new_star_rental_path(@star), class: "btn btn-primary" %>
+
+          <div data-controller="toggle" class="mt-5">
+            <button data-action="click->toggle#fire" class="btn btn-outline-primary">Rent This Star NOW!</button>
+            <div data-toggle-target="togglableElement" class="d-none">
+              <%= render "rentals/form", star: @star, rental: @rental %>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

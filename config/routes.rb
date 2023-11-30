@@ -10,6 +10,12 @@ Rails.application.routes.draw do
     resources :rentals
   end
   get '/dashboard', to: 'pages#dashboard'
+  resources :rentals do
+    # Use a member route for approve_request
+    member do
+      patch 'approve_request'
+    end
+  end
   # Defines the root path route ("/")
   # root "posts#index"
 end

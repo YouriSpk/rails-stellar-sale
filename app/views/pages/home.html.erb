@@ -1,23 +1,27 @@
-<div class="jumbotron banner text-white" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.miguelclaro.com/wp/wp-content/uploads/2019/10/ParanalRoad-AtacamDesertPano-8191-net.jpg); background-size: cover;">
-  <div class="container py-4">
-    <h1>Rent a Star for a loved one!</h1>
-    <p>Surprise someone by something unique, name a star after them</p>
-    <a class="btn btn-primary" href="/stars">Browse stars</a>
+<div class="jumbotron banner text-white d-flex flex-column justify-content-between" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.miguelclaro.com/wp/wp-content/uploads/2019/10/ParanalRoad-AtacamDesertPano-8191-net.jpg); background-size: cover; height: 600px; padding: 20px;">
+  <div class="container py-5 text-center">
+    <h1 class="display-1 mb-4">Rent a Star for a loved one!</h1>
+  </div>
+  <div class="container py-5 text-center">
+    <h3 class="display-6 lead mb-4">Surprise someone by something unique, name a star after them</h3>
+  </div>
+  <div class="container py-5 text-center">
+    <a class="btn btn-outline-light btn-lg rounded-pill" href="/stars">Browse stars</a>
   </div>
 </div>
+
 
 <div class="container mt-5">
   <div class="row">
     <% @stars.each do |star| %>
       <div class="col-md-4 mb-4">
-        <%= link_to star_path(star), class: "card-link" do %>
-          <div class="card">
+        <%= link_to star_path(star), class: "card-link text-decoration-none" do %>
+          <div class="card h-100 border-dark">
             <img src="<%= 'https://imageio.forbes.com/specials-images/imageserve/61d4ded7a0cee3e8bd299df6/0x0.jpg?format=jpg&crop=3037,1424,x280,y381,safe&height=900&width=1600&fit=bounds' %>" class="card-img-top" alt="<%= star.initial_name %> Image">
-            <div class="card-body" style="height: 200px; overflow: hidden;">
-              <h5 class="card-title"><%= star.initial_name %></h5>
-              <p class="card-text"><strong>Distance (light years):</strong> <%= star.distance_from_earth_in_light_years %></p>
-              <p class="card-text"><strong>Spectral Class:</strong> <%= star.spectral_class %></p>
-              <p class="card-text"><strong>Price per day:</strong> $<%= star.price %></p>
+            <div class="card-body">
+              <h5 class="card-title text-dark mb-3"><%= star.initial_name %></h5>
+              <p class="card-text mb-2 mt-3">This star is <strong class="text-dark"><%= star.distance_from_earth_in_light_years.to_i %></strong> light years away</p>
+              <p class="card-text">€<%= star.price %>/day</p>
             </div>
           </div>
         <% end %>

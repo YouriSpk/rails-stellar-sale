@@ -27,7 +27,7 @@ class StarsController < ApplicationController
   private
 
   def star_params
-    params.require(:star).permit(:initial_name, :price, :category, :distance_from_earth_in_light_years, :spectral_class)
+    params.require(:star).permit(:initial_name, :price, :category, :distance_from_earth_in_light_years, :spectral_class, :photo)
   end
 
 end

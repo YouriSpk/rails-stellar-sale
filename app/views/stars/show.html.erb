@@ -21,6 +21,7 @@
           <button data-action="click->toggle#fire" class="btn btn-dark btn-lg rounded-pill border border-light text-white btn-light:hover text-dark">Rent This Star NOW!</button>
           <div data-toggle-target="togglableElement" class="d-none">
             <%= render "rentals/form", star: @star, rental: @rental %>
+          <%= cl_image_tag @star.photo.key, height: 300, width: 400, crop: :fill %>
           </div>
         </div>
         <div id="totalSum"></div>

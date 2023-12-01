@@ -1,39 +1,39 @@
 <div class="container-fluid mt-5 mx-auto">
   <h2 class="display-3 text-center"><%= @star.initial_name %></h2>
-  <div class="container border border-dark rounded-4 p-4">
-  <div class="card border-0">
-        <div class="row">
-    <!-- Column for the star image -->
-    <div class="col-md-12 text-center">
-    <!--  <img src="<%= 'https://imageio.forbes.com/specials-images/imageserve/61d4ded7a0cee3e8bd299df6/0x0.jpg?format=jpg&crop=3037,1424,x280,y381,safe&height=900&width=1600&fit=bounds' %>" class="img-fluid rounded-4" alt="<%= @star.initial_name %> Image"> -->
-      <% if @star.photo.key  %>
+  <div class="container bg-white border border-dark rounded-4 p-4">
+    <div class="card bg-white border-0">
+      <div class="row">
+        <!-- Column for the star image -->
+        <div class="col-md-12 text-center">
+          <!--  <img src="<%= 'https://imageio.forbes.com/specials-images/imageserve/61d4ded7a0cee3e8bd299df6/0x0.jpg?format=jpg&crop=3037,1424,x280,y381,safe&height=900&width=1600&fit=bounds' %>" class="img-fluid rounded-4" alt="<%= @star.initial_name %> Image"> -->
+          <% if @star.photo.key  %>
             <%= cl_image_tag @star.photo.key, crop: :fill %>
-        <% else %> <img src="<%= 'https://imageio.forbes.com/specials-images/imageserve/61d4ded7a0cee3e8bd299df6/0x0.jpg?format=jpg&crop=3037,1424,x280,y381,safe&height=900&width=1600&fit=bounds' %>" class="img-fluid rounded-4" alt="<%= @star.initial_name %> Image">
-
-      <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <!-- Column for star information and form -->
-    <div class="col-md-12 text-center">
-      <div>
-        <!-- Star information -->
-        <p class="display-8 mt-2"><strong><%= @star.distance_from_earth_in_light_years %> light Years from Earth</strong></p>
-        <p class="display-8"><strong><div id="starPrice"><%= @star.price %></div> <span class="display-8">€</span></strong></p>
-        <p class="display-8">It is an <strong><%= @star.spectral_class %></strong> spectral class</p>
-        <!-- Rental form -->
-        <div data-controller="toggle" class="mt-5">
-          <%# <%= cl_image_tag @star.photo.key, height: 300, width: 400, crop: :fill %>
-          <button data-action="click->toggle#fire" class="btn btn-dark btn-lg rounded-pill border border-light text-white btn-light:hover text-dark">Rent This Star NOW!</button>
-          <div data-toggle-target="togglableElement" class="d-none">
-            <%= render "rentals/form", star: @star, rental: @rental %>
+          <% else %>
+            <img src="<%= 'https://imageio.forbes.com/specials-images/imageserve/61d4ded7a0cee3e8bd299df6/0x0.jpg?format=jpg&crop=3037,1424,x280,y381,safe&height=900&width=1600&fit=bounds' %>" class="img-fluid rounded-4" alt="<%= @star.initial_name %> Image">
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Column for star information and form -->
+        <div class="col-md-12 text-center">
+          <div>
+            <!-- Star information -->
+            <h2 class="card-title display-7 mt-4 text-center"><%= @star.initial_name %></h2>
+            <p class="display-8 mt-2"><strong><%= @star.distance_from_earth_in_light_years %> light Years from Earth</strong></p>
+            <p class="display-8"><strong><div class="d-inline" id="starPrice"><%= @star.price %></div> <span class="display-8 d-inline">€</span></strong></p>
+            <p class="display-8">It is an <strong><%= @star.spectral_class %></strong> spectral class</p>
+            <!-- Rental form -->
+            <div data-controller="toggle" class="mt-5">
+              <%# <%= cl_image_tag @star.photo.key, height: 300, width: 400, crop: :fill %>
+              <button data-action="click->toggle#fire" class="btn btn-dark btn-lg rounded-pill border border-light text-white btn-light:hover text-dark">Rent This Star NOW!</button>
+              <div data-toggle-target="togglableElement" class="d-none">
+                <%= render "rentals/form", star: @star, rental: @rental %>
+              </div>
+            </div>
+            <div id="totalSum"></div>
           </div>
         </div>
-        <div id="totalSum"></div>
       </div>
     </div>
   </div>
-  </div>
-  </div>
-
 </div>

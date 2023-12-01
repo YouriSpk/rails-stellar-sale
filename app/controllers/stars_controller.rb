@@ -7,6 +7,7 @@ class StarsController < ApplicationController
 
   def index
     @stars = Star.all
+    @rental = Rental.new
   end
 
   def new

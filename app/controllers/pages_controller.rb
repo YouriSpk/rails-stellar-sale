@@ -7,6 +7,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
+    @star = Star.new
     if @user.admin
       @pending_requests = [""]
     else

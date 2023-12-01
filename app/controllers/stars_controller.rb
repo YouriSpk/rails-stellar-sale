@@ -7,6 +7,7 @@ class StarsController < ApplicationController
 
   def index
     @stars = Star.all
+    @rental = Rental.new
   end
 
   def new
@@ -23,6 +24,23 @@ class StarsController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @star = Star.find(params[:id])
+  end
+
+  def update
+    @star = Star.find(params[:id])
+    @star.update(star_params)
+    redirect_to stars_path
+  end
+
+  # def destroy
+  #   @star = Star.find(params[:id])
+  #   @star.destroy
+  #   redirect_to stars_path, status: :see_other
+
+  # end
 
   private
 

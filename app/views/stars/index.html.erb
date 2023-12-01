@@ -2,14 +2,31 @@
   <div class="row">
     <% @stars.each do |star| %>
       <div class="col-md-4 mb-4">
-        <div class="card">
+        <div class="card" style="height: 500px;">
           <%= link_to star_path(star), class: "card-link" do %>
-            <img src="<%= 'https://imageio.forbes.com/specials-images/imageserve/61d4ded7a0cee3e8bd299df6/0x0.jpg?format=jpg&crop=3037,1424,x280,y381,safe&height=900&width=1600&fit=bounds' %>" class="card-img-top" alt="<%= star.initial_name %> Image">
+            <div class="row">
+              <!-- Column for the star image -->
+              <div class="col-md-12 text-center">
+                <% if star.photo.key %>
+                  <%= cl_image_tag star.photo.key, crop: :fill, class: "card-img-top", style: "height: 200px;" %>
+                <% else %>
+                  <img src="<%= 'https://imageio.forbes.com/specials-images/imageserve/61d4ded7a0cee3e8bd299df6/0x0.jpg?format=jpg&crop=3037,1424,x280,y381,safe&height=900&width=1600&fit=bounds' %>" class="card-img-top" alt="<%= star.initial_name %> Image" style="height: 200px;">
+                <% end %>
+              </div>
+            </div>
             <div class="card-body">
-              <h2 class="card-title"><%= star.initial_name %></h2>
-              <p class="card-text"><strong>Distance (light years):</strong> <%= star.distance_from_earth_in_light_years %></p>
-              <p class="card-text"><strong>Spectral Class:</strong> <%= star.spectral_class %></p>
-              <p class="card-text"><strong>Price per day:</strong> <%= star.price %>€ </p>
+              <h2 class="card-title display-7 text-center"><%= star.initial_name %></h2>
+              <p class="card-text display-8 mt-2 text-center"><strong><%= star.distance_from_earth_in_light_years %> light Years from Earth</strong></p>
+              <p class="card-text display-8 text-center"><strong><%= star.price %>€</strong></p>
+              <p class="card-text display-8 text-center">It is an <strong><%= star.spectral_class %></strong> spectral class</p>
+              <!-- Rental form -->
+              <div data-controller="toggle" class="mt-3 text-center">
+                <button data-action="click->toggle#fire" class="btn btn-dark btn-lg rounded-pill border border-light text-white btn-light:hover text-dark">Rent This Star NOW!</button>
+                <div data-toggle-target="togglableElement" class="d-none">
+                  <%= render "rentals/form", star: star, rental: Rental.new %>
+                </div>
+              </div>
+              <div id="totalSum"></div>
             </div>
           <% end %>
         </div>

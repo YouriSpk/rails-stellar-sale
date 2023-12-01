@@ -26,7 +26,7 @@ response = http.request(request)
 data = JSON.parse(response.body)
 if data
   puts "Removing all stars....."
-  Star.destroy_all
+  # Star.destroy_all
   puts "Seeding new data....."
   data.each do |item|
     puts item

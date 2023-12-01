@@ -20,19 +20,60 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-  <hr style="margin-top: 20px; margin-bottom: 20px;">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+      display: flex;
+      flex-direction: column;
+    }
 
-  <footer style="margin: 20px;">
+    .footer {
+      margin-top: auto; /* Push the footer to the bottom */
+      background-color: #f2f2f2; /* Add a background color if desired */
+      padding: 20px;
+    }
+
+    /* Your existing styles for navigation links, social media icons, and footer info go here */
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      display: inline;
+      margin-right: 15px;
+    }
+
+    .footer-social a {
+      margin-right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="home">
+  </div>
+
+  <footer class="footer">
     <div class="footer-container">
-      <div class="footer-links" style="margin-bottom: 10px;">
-        <ul style="list-style: none; padding: 0; margin: 0;">
-          <li style="display: inline;"><a href="#home">Home</a></li>
-          <li style="display: inline;"><a href="#about">About</a></li>
-          <li style="display: inline;"><a href="#services">Services</a></li>
-          <li style="display: inline;"><a href="#contact">Contact</a></li>
+      <div class="footer-links">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
-      <div class="footer-social" style="margin-bottom: 10px;">
+      <div class="footer-social">
         <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
         <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
         <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -43,6 +84,5 @@
       <p>&copy; 2023 Your Company. All rights reserved. | Le Wagon Berlin | Email: info@stellarsale.com</p>
     </div>
   </footer>
-
   </body>
 </html>

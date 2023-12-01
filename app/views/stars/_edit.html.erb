@@ -1,30 +1,47 @@
+<<<<<<< HEAD:app/views/stars/_edit.html.erb
 <%= simple_form_for(star) do |f| %>
+=======
+<div class="container border border-dark rounded-4 p-4 mt-5 opaque-form">
+    <h2 class="text-center">Create a new star</h2>
+    <div class="card border-0">
+      <%= simple_form_for @star do |f| %>
+>>>>>>> master:app/views/stars/new.html.erb
   <%= f.error_notification %>
 
-  <div class="field">
-    <%= f.input :initial_name %>
+  <div class="field mb-3">
+    <%= f.label :initial_name %>
+    <%= f.text_field :initial_name, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.input :price %>
+  <div class="field mb-3">
+    <%= f.label :price %>
+    <%= f.number_field :price, class: "form-control" %>
   </div>
 
-  <div class="field">
-     <%= f.input :category %>
+  <div class="field mb-3">
+    <%= f.label :category %>
+    <%= f.text_field :category, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.input :distance_from_earth_in_light_years %>
+  <div class="field mb-3">
+    <%= f.label :distance_from_earth_in_light_years %>
+    <%= f.number_field :distance_from_earth_in_light_years, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.input :spectral_class %>
+  <div class="field mb-3">
+    <%= f.label :spectral_class %>
+    <%= f.text_field :spectral_class, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.input :photo %>
+  <div class="field mb-3">
+    <%= f.label :photo %>
+    <%= f.file_field :photo, class: "form-control" %>
   </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create !", class: "btn btn-dark btn-lg rounded-pill border border-light text-white btn-light:hover text-dark" %>
   </div>
 <% end %>
+    </div>
+
+</div>

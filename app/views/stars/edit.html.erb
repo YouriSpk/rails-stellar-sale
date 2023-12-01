@@ -1,0 +1,30 @@
+<%= simple_form_for @star do |f| %>
+  <%= f.error_notification %>
+
+  <div class="field">
+    <%= f.input :initial_name %>
+  </div>
+
+  <div class="field">
+    <%= f.input :price %>
+  </div>
+
+  <div class="field">
+     <%= f.input :category %>
+  </div>
+
+  <div class="field">
+    <%= f.input :distance_from_earth_in_light_years %>
+  </div>
+
+  <div class="field">
+    <%= f.input :spectral_class %>
+  </div>
+
+  <div class="field">
+    <%= f.input :photo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

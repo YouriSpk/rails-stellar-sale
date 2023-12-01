@@ -31,7 +31,7 @@ class StarsController < ApplicationController
   def update
     @star = Star.find(params[:id])
     @star.update(star_params)
-    redirect_to stars_path
+    redirect_to dashboard_path
   end
 
   # def destroy

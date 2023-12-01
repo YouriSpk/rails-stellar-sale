@@ -3,41 +3,94 @@
 
   <% @pending_requests = Rental.joins(:star).where(approved: false, stars: { user_id: current_user.id }) %>
 
-  <% if @user.admin? %>
-    <!-- Display pending requests for admin -->
-    <h3>Pending Requests:</h3>
-    <div class="row">
-      <% @pending_requests.each do |request| %>
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"><%= request.new_name %></h5>
-              <p class="card-text">
-                From: <%= request.start_date.strftime("%d %B %Y") %> To: <%= request.end_date.strftime("%d %B %Y") %>
-              </p>
-              <!-- Add more details as needed -->
+  <div class="tab">
+    <button class="tablinks active" onclick="openCity(event, 'pending')">Pending Requests</button>
+    <button class="tablinks" onclick="openCity(event, 'new')">Create new star</button>
+    <button class="tablinks" onclick="openCity(event, 'all')">All Stars</button>
+  </div>
 
-              <!-- Button to approve the request -->
-              <%= button_to "Approve Request", approve_request_rental_path(request), method: :patch, class: "btn btn-success" %>
+  <div id="pending" class="tabcontent" style="display: block;">
+
+      <% if @user.admin? && @pending_requests.present?  %>
+        <!-- Display pending requests for admin -->
+        <h3>Pending Requests:</h3>
+        <div class="row">
+          <% @pending_requests.each do |request| %>
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><%= request.new_name %></h5>
+                  <p class="card-text">
+                    From: <%= request.start_date.strftime("%d %B %Y") %> To: <%= request.end_date.strftime("%d %B %Y") %>
+                  </p>
+                  <!-- Add more details as needed -->
+
+                  <!-- Button to approve the request -->
+                  <%= button_to "Approve Request", approve_request_rental_path(request), method: :patch, class: "btn btn-success" %>
+                </div>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
-  <% else %>
-    <!-- Display rentals for non-admin users -->
-    <h3>Your Rentals:</h3>
-    <div class="row">
-      <% @rentals.each do |rental| %>
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title"><%= rental.details %> <!-- Replace with actual details --></h5>
-              <!-- Add more details as needed -->
+      <% elseif @rentals.present? %>
+        <!-- Display rentals for non-admin users -->
+        <h3>Your Rentals:</h3>
+        <div class="row">
+          <% @rentals.each do |rental| %>
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><%= rental.details %> <!-- Replace with actual details --></h5>
+                  <!-- Add more details as needed -->
+                </div>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
+      <% else %>
+            <p>You have no pending requests</p>
       <% end %>
-    </div>
-  <% end %>
+  </div>
+
+  <div id="new" class="tabcontent" style="display: none;">
+   <%= render "stars/new", star: @star %>
+  </div>
+
+  <div id="all" class="tabcontent" style="display: none;">
+    <% @user_stars = Star.where(user_id: current_user.id ) %>
+    <% if @user_stars.present? %>
+       <% @user_stars.each do |star| %>
+          <button class="star" onclick="openEditForm(event, '<%= star.id %>')"><%= star.initial_name %></button>
+          <div id=<%= star.id %> class="d-none">  <%= render "stars/edit", star: star %> </div>
+       <% end %>
+    <% else %>
+      <p> You have no added stars</p>
+    <% end %>
+  </div>
+
 </div>
+<script>
+  function openEditForm(evt, cityName) {
+    document.getElementById(cityName).classList.toggle("d-none");
+  }
+  function openCity(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the link that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+  </script>

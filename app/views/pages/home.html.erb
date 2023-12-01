@@ -11,8 +11,8 @@
 </div>
 
 <!-- Carousel -->
-<div class="container mt-5">
-  <div id="starCarousel" class="carousel slide mx-auto" data-bs-ride="carousel" style="width: 200%; height: 150%";>
+<div class="mt-5">
+  <div id="starCarousel" class="carousel slide mx-auto" data-bs-ride="carousel" style="width: 80%; height: 150%";>
     <!-- Carousel Indicators -->
     <div class="carousel-indicators">
       <% @stars.each_with_index do |star, index| %>
@@ -21,7 +21,7 @@
     </div>
 
     <!-- Carousel Items -->
-    <div class="carousel-inner">
+    <div class="carousel-inner" >
       <% @stars.each_slice(3).with_index do |stars_chunk, index| %>
         <div class="carousel-item <%= index.zero? ? 'active' : '' %>">
           <div class="row">

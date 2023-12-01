@@ -1,5 +1,14 @@
 
-.field {
-  border-radius: 20px; /* Arrondi des bords */
-  /* Autres styles CSS */
+.form-control {
+  border-radius: 20px;
+  border-width: 2px;
+}
+
+.field label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.opaque-form {
+    opacity: 0.75;
 }

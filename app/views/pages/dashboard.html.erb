@@ -4,10 +4,13 @@
   <% @pending_requests = Rental.joins(:star).where(approved: false, stars: { user_id: current_user.id }) %>
 
   <div class="tab">
-    <button class="tablinks active" onclick="openCity(event, 'pending')">Pending Requests</button>
+  <button class="tablinks active" onclick="openCity(event, 'pending')">Pending Requests</button>
+  <% if @user.admin? %>
     <button class="tablinks" onclick="openCity(event, 'new')">Create new star</button>
-    <button class="tablinks" onclick="openCity(event, 'all')">All Stars</button>
-  </div>
+  <% end %>
+  <button class="tablinks" onclick="openCity(event, 'all')">All Stars</button>
+</div>
+
 
   <div id="pending" class="tabcontent" style="display: block;">
 
